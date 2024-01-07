@@ -59,8 +59,16 @@ def read_data(folder_path: str) -> list:
     return vehicle_list
 
 
+def display_data(vehicles):
+    for vehicle in vehicles:
+        print(vehicle)
+
+
+# Example usage
 def main():
-    read_data("data")
+    data_folder_path = "data"
+
+    display_data(read_data(data_folder_path))
 
 
 ##############################################################################
