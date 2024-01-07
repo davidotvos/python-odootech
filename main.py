@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+import os
+import json
+from pathlib import Path
+
 
 class Auto:
     def __init__(self, id, type, doors, brand):
@@ -23,8 +27,40 @@ class Bycicle:
         return f"ID: {self.id}, Type: {self.type}, Load capacity: {self.load_capacity}, Brand: {self.brand}"
 
 
+def read_data(folder_path: str) -> list:
+    vehicle_list = []
+
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            with open(file_path, "r") as f:
+                data = json.load(f)
+
+                id = Path(file_path).stem
+
+                if data["type"] == "auto":
+                    vehicle = Auto(id, data["type"], data["ajtok_szama"], data["marka"])
+                    vehicle_list.append(vehicle)
+
+                elif data["type"] == "bicikli":
+                    vehicle = Bycicle(
+                        id, data["type"], data["terhelhetoseg"], data["marka"]
+                    )
+                    vehicle_list.append(vehicle)
+
+                # Add more types if needed
+                else:
+                    print(data)
+                    raise ValueError("Unknown transport type")
+
+                print(f"Processing {id} - Type: {data['type']}")
+
+    print()
+    return vehicle_list
+
+
 def main():
-    print("Py3")
+    read_data("data")
 
 
 ##############################################################################
