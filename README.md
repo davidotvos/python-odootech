@@ -10,7 +10,7 @@ This Python program is designed to read and process vehicle data stored in JSON 
 
 ## Usage
 
-1. Clone the repository or download the `vehicle_data_processor.py` file.
+1. Clone the repository or download the `main.py` file.
 2. Ensure you have Python 3.x installed on your system.
 3. Run the program by executing the following command in the terminal:
 
@@ -41,7 +41,7 @@ The program expects JSON files with the following structure:
 Feel free to add more types following a similar format.
 
 ## Customization
-You can customize the program by modifying the read_data function to accommodate additional vehicle types or adjusting the data folder path.
+You can customize the program by modifying the `read_data` function to accommodate additional vehicle types or adjusting the data folder path.
 
 ## Example
 ```
