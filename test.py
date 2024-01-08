@@ -30,7 +30,7 @@ class TestReadData(unittest.TestCase):
         # Create a test file with Auto data
         file_content = {
             "type": "auto",
-            "ajtok_szama": "5",
+            "ajtok_szama": 5,
             "marka": "Opel",
         }
         file_path = self.create_test_file("auto_test.json", file_content)
@@ -40,14 +40,14 @@ class TestReadData(unittest.TestCase):
         self.assertEqual(len(result), 1)
         self.assertTrue(isinstance(result[0], Auto))
         self.assertEqual(result[0].type, "auto")
-        self.assertEqual(result[0].doors, "5")
+        self.assertEqual(result[0].doors, 5)
         self.assertEqual(result[0].brand, "Opel")
 
     def test_read_data_with_bycicle(self):
         # Create a test file with Bicycle data
         file_content = {
             "type": "bicikli",
-            "terhelhetoseg": "130",
+            "terhelhetoseg": 130,
             "marka": "Csepel",
         }
         file_path = self.create_test_file("bycicle_test.json", file_content)
@@ -57,14 +57,14 @@ class TestReadData(unittest.TestCase):
         self.assertEqual(len(result), 1)
         self.assertTrue(isinstance(result[0], Bycicle))
         self.assertEqual(result[0].type, "bicikli")
-        self.assertEqual(result[0].load_capacity, "130")
+        self.assertEqual(result[0].load_capacity, 130)
         self.assertEqual(result[0].brand, "Csepel")
 
     def test_read_data_with_auto_and_bicycle(self):
         # Create a test file with Auto data
         auto_content = {
             "type": "auto",
-            "ajtok_szama": "2",
+            "ajtok_szama": 2,
             "marka": "Ferrari",
         }  # Adjust attribute names
         auto_file_path = self.create_test_file("auto_test.json", auto_content)
@@ -72,7 +72,7 @@ class TestReadData(unittest.TestCase):
         # Create a test file with Bicycle data
         bicycle_content = {
             "type": "bicikli",
-            "terhelhetoseg": "90",
+            "terhelhetoseg": 90,
             "marka": "Bmx",
         }  # Adjust attribute names
         bicycle_file_path = self.create_test_file("bicycle_test.json", bicycle_content)
@@ -84,7 +84,7 @@ class TestReadData(unittest.TestCase):
         auto_result = [vehicle for vehicle in result if isinstance(vehicle, Auto)]
         self.assertEqual(len(auto_result), 1, "Expected 1 Auto vehicle in the result.")
         self.assertEqual(
-            auto_result[0].doors, "2", "Unexpected number of doors for Auto."
+            auto_result[0].doors, 2, "Unexpected number of doors for Auto."
         )  # Adjust attribute names
 
         # Verify the result for Bicycle
@@ -94,7 +94,7 @@ class TestReadData(unittest.TestCase):
         )
         self.assertEqual(
             bicycle_result[0].load_capacity,
-            "90",
+            90,
             "Unexpected load capacity for Bicycle.",
         )  # Adjust attribute names
 
