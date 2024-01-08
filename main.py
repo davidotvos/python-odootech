@@ -16,7 +16,7 @@ class Auto:
         return f"ID: {self.id}, Type: {self.type}, Doors: {self.doors}, Brand: {self.brand}"
 
 
-class Bycicle:
+class Bicycle:
     def __init__(self, id, type, load_capacity, brand):
         self.id = id
         self.type = type
@@ -43,7 +43,7 @@ def read_data(folder_path: str) -> list:
                     vehicle_list.append(vehicle)
 
                 elif data["type"] == "bicikli":
-                    vehicle = Bycicle(
+                    vehicle = Bicycle(
                         id, data["type"], data["terhelhetoseg"], data["marka"]
                     )
                     vehicle_list.append(vehicle)

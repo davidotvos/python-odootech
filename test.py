@@ -7,7 +7,7 @@ from unittest.mock import patch
 from main import (
     read_data,
     Auto,
-    Bycicle,
+    Bicycle,
 )
 
 
@@ -43,19 +43,19 @@ class TestReadData(unittest.TestCase):
         self.assertEqual(result[0].doors, 5)
         self.assertEqual(result[0].brand, "Opel")
 
-    def test_read_data_with_bycicle(self):
+    def test_read_data_with_bicycle(self):
         # Create a test file with Bicycle data
         file_content = {
             "type": "bicikli",
             "terhelhetoseg": 130,
             "marka": "Csepel",
         }
-        file_path = self.create_test_file("bycicle_test.json", file_content)
+        file_path = self.create_test_file("bicycle_test.json", file_content)
 
         # Call the function and test the result
         result = read_data(self.temp_dir)
         self.assertEqual(len(result), 1)
-        self.assertTrue(isinstance(result[0], Bycicle))
+        self.assertTrue(isinstance(result[0], Bicycle))
         self.assertEqual(result[0].type, "bicikli")
         self.assertEqual(result[0].load_capacity, 130)
         self.assertEqual(result[0].brand, "Csepel")
@@ -88,7 +88,7 @@ class TestReadData(unittest.TestCase):
         )  # Adjust attribute names
 
         # Verify the result for Bicycle
-        bicycle_result = [vehicle for vehicle in result if isinstance(vehicle, Bycicle)]
+        bicycle_result = [vehicle for vehicle in result if isinstance(vehicle, Bicycle)]
         self.assertEqual(
             len(bicycle_result), 1, "Expected 1 Bicycle vehicle in the result."
         )
