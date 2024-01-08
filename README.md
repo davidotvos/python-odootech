@@ -15,7 +15,11 @@ This Python program is designed to read and process vehicle data stored in JSON 
 3. Run the program by executing the following command in the terminal:
 
 ```
-python app.py
+python main.py
+```
+or
+```
+python3 main.py
 ```
 4. The program will read JSON files from the specified folder (data by default) and display processed vehicle data.
 
@@ -55,3 +59,12 @@ if __name__ == "__main__":
     main()
 ```
 
+## Test
+To run the tests, execute the following command in the terminal:
+```
+python test.py
+```
+or
+```
+python3 test.py
+```
